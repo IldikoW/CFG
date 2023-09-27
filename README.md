@@ -1,2 +1,3 @@
-# CFG
+# CFG Data Course
+
 Assignments
