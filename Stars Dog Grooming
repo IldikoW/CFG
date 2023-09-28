@@ -1,0 +1,76 @@
+const WashDry = [40, 50, 60];
+//constances for prices for nail and hair cut prices 
+const Nails =15;
+const Hair =20;
+
+// Get HTML elements by their IDs
+const userInput = document.getElementById('userInput');
+const addButton = document.getElementById('addButton');
+const division = document.getElementById('division');
+const buttonWashDry = document.getElementById('buttonWashDry');
+const buttonNails = document.getElementById('buttonNails');
+const buttonHair = document.getElementById('buttonHair');
+
+// Define functions for price calculation and greeting message
+function PriceWashDry() {
+    const size = prompt("What is the size of your dog?");
+
+    if (size === "large") {
+        displayMessage("The price is: £" + WashDry[2]);
+    } else if (size === "medium") {
+        displayMessage("The price is: £" + WashDry[1]);
+    } else if (size === "small") {
+        displayMessage("The price is: £" + WashDry[0]);
+    } else {
+        alert("Please, write small, medium, or large.");
+    }
+}
+
+function PriceNails() {
+    displayMessage("The price is: £" + Nails);
+}
+
+function PriceHair() {
+    displayMessage("The price is: £" + Hair);
+}
+
+function displayMessage(message) {
+    const divItem = document.createElement('p');
+    divItem.textContent = message;
+
+    divItem.addEventListener('mouseover', function() {
+        divItem.style.backgroundColor = 'lightgrey';
+        divItem.style.fontWeight = 'bold';
+        divItem.style.transition = '.5s';
+    });
+
+    divItem.addEventListener('mouseout', function() {
+        divItem.style.backgroundColor = '';
+        divItem.style.fontWeight = '';
+    });
+
+    division.appendChild(divItem);
+}
+
+// Attach event listeners to buttons
+addButton.addEventListener('click', function() {
+    let text = userInput.value;
+
+    if (text) {
+        displayMessage("Hello " + text + " 💗");
+        userInput.value = '';
+    }
+});
+
+buttonWashDry.addEventListener('click', PriceWashDry);
+buttonNails.addEventListener('click', PriceNails);
+buttonHair.addEventListener('click', PriceHair);
+
+// Add emojis to the emoji line
+const emojiLineDiv = document.getElementById("emoji-line");
+const emoji = "🐶";
+const numberOfEmojis = 50;
+
+for (let i = 0; i < numberOfEmojis; i++) {
+    emojiLineDiv.innerHTML += emoji;
+}
